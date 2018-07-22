@@ -1,0 +1,3 @@
+nomad job run -address=http://34.246.189.1:4646 test_job.hcl
+
+nomad job dispatch -address=http://34.246.189.1:4646 -meta "input='etegyeuygeygeye'" -meta "output=outy" transform

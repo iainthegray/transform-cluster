@@ -1,0 +1,10 @@
+{
+  "advertise_addr": "172.31.0.95",
+  "bind_addr": "172.31.0.95",
+  "client_addr": "0.0.0.0",
+  "datacenter": "eu-west-1",
+  "node_name": "i-06ec8d1ecf2f28166",
+  "server": false,
+  "ui": false,
+  "retry_join":["provider=aws tag_key=ClusterName tag_value=container-001"]
+}

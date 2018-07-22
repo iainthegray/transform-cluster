@@ -1,0 +1,8 @@
+env_setup
+env_setup/*
+.terraform/
+*tfstate*
+terraform2/
+terraform3/
+terraform.tfvars
+
