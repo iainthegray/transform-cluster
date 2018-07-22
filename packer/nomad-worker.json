@@ -2,18 +2,20 @@
   "description": "This is a basic packer file for building a simple AWS AMI containing nomad and consul",
   "variables": {
     "nomad_version": "0.8.4",
-    "consul_version": "1.2.1"
+    "consul_version": "1.2.1",
+    "source_ami": "ami-41505fab",
+    "os_version_tag": "Amazon Linux AMI 2018.03"
   },
   "builders": [
     {
       "type": "amazon-ebs",
-      "source_ami": "ami-41505fab",
+      "source_ami": "{{user `source_ami`}}",
       "instance_type": "t2.micro",
       "ssh_username": "ec2-user",
       "ami_name": "nomad-consul{{timestamp}}",
       "communicator": "ssh",
       "tags": {
-        "OS_Version": "Amazon Linux AMI 2018.03",
+        "OS_Version": "{{user `os_version_tag`}}",
         "Base_AMI_Name": "{{ .SourceAMIName }}",
         "Install": "nomad-consul"
       }
