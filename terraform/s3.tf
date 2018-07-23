@@ -6,6 +6,6 @@ resource "aws_s3_bucket" "transform-bucket-irg-test" {
   acl    = "private"
 
   tags {
-    Name        = "${var.transform-bucket}"
+    Name = "${var.transform-bucket}"
   }
 }

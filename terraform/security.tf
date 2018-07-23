@@ -6,6 +6,7 @@ resource "aws_security_group" "container_server" {
   description = "The SG for Container Servers"
   vpc_id      = "${var.global_vpc_id}"
 }
+
 #--------------------------------------------------------------
 # Container Server Instance Security Group SELF Ingress Rules
 #--------------------------------------------------------------
@@ -49,30 +50,30 @@ resource "aws_security_group_rule" "container_server_allow_self_8301-8302_udp" {
 # Container Server Instance Security Group Ingress Rules
 #--------------------------------------------------------------
 resource "aws_security_group_rule" "container_server_allow_ingress_ssh" {
-  type                     = "ingress"
-  from_port                = 22
-  to_port                  = 22
-  protocol                 = "tcp"
-  cidr_blocks              = "${var.consul_ssh_ingress}"
-  security_group_id        = "${aws_security_group.container_server.id}"
+  type              = "ingress"
+  from_port         = 22
+  to_port           = 22
+  protocol          = "tcp"
+  cidr_blocks       = "${var.consul_ssh_ingress}"
+  security_group_id = "${aws_security_group.container_server.id}"
 }
 
 resource "aws_security_group_rule" "container_server_allow_ingress_4646" {
-  type                     = "ingress"
-  from_port                = 4646
-  to_port                  = 4646
-  protocol                 = "tcp"
+  type              = "ingress"
+  from_port         = 4646
+  to_port           = 4646
+  protocol          = "tcp"
   cidr_blocks       = ["0.0.0.0/0"]
-  security_group_id        = "${aws_security_group.container_server.id}"
+  security_group_id = "${aws_security_group.container_server.id}"
 }
 
 resource "aws_security_group_rule" "container_server_allow_ingress_8500" {
-  type                     = "ingress"
-  from_port                = 8500
-  to_port                  = 8500
-  protocol                 = "tcp"
-  cidr_blocks              = "${var.consul_ui_ingress}"
-  security_group_id        = "${aws_security_group.container_server.id}"
+  type              = "ingress"
+  from_port         = 8500
+  to_port           = 8500
+  protocol          = "tcp"
+  cidr_blocks       = "${var.consul_ui_ingress}"
+  security_group_id = "${aws_security_group.container_server.id}"
 }
 
 #--------------------------------------------------------------

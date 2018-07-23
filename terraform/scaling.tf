@@ -11,16 +11,19 @@ resource "aws_autoscaling_group" "container_server" {
   health_check_grace_period = "${var.container_server_asg_grace_period}"
   enabled_metrics           = ["${split(",", var.container_server_asg_enabled_metrics)}"]
   default_cooldown          = "${var.container_server_asg_cooldown}"
+
   tag {
-    key                = "ClusterName"
-    value              = "${var.container_server_consul_tag_value}"
+    key                 = "ClusterName"
+    value               = "${var.container_server_consul_tag_value}"
     propagate_at_launch = "true"
   }
+
   tag {
-    key                = "Name"
-    value              = "${var.container_server_name_tag_value}"
+    key                 = "Name"
+    value               = "${var.container_server_name_tag_value}"
     propagate_at_launch = "true"
   }
+
   lifecycle {
     create_before_destroy = true
   }
@@ -38,6 +41,7 @@ resource "aws_launch_configuration" "container_server" {
 
   security_groups = ["${aws_security_group.container_server.id}"]
   user_data       = "${data.template_file.container_server_user_data.rendered}"
+
   lifecycle {
     create_before_destroy = true
   }

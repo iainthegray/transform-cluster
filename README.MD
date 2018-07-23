@@ -23,7 +23,7 @@ The terraform code in this repo is most definitely **NOT SAFE FOR PRODUCTION**
 
 * There is no supporting infrastructure such as an [E|A]LB
 * There is no TLS on anything
-* The all servers are open to the world for ssh, consul and Nomad
+* The nomad worker node has a role on it to allow it to read/write to the S3 bucket. This is not secure as all jobs on the node would inherit this position. A better way would be to provide API keys via Vault.
 
 ## Dependencies
 
@@ -33,3 +33,7 @@ This module makes the following assumptions:
   * AWS_ACCESS_KEY_ID
   * AWS_SECRET_ACCESS_KEY
   * AWS_DEFAULT_REGION
+
+## Further Improvements
+__Automatic job Dispatch__ - The jobs should use a further piece of infrastructure (AWS Lambda) that triggers on an S3 event when new files are added to the source folder.
+__Vault Integration__ - As mentioned in security section, The S3 permissions would benefit from utilising Vault to take API keys rather than having a role on the worker node to limit access to only jobs that need it.
