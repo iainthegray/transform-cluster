@@ -39,3 +39,7 @@ This module makes the following assumptions:
 __Automatic job Dispatch__ - The jobs should use a further piece of infrastructure (AWS Lambda) that triggers on an S3 event when new files are added to the source folder.
 
 __Vault Integration__ - As mentioned in security section, The S3 permissions would benefit from utilising Vault to take API keys rather than having a role on the worker node to limit access to only jobs that need it.
+
+__Cluster Scaling__ - Currenly in this POC the cluster does not scale to the number of jobs. An improvement would be to add the use of *Replicator* to allow for dynamic scaling of the cluster in response to metrics
+
+https://github.com/elsevier-core-engineering/replicator
