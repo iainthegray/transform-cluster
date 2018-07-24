@@ -76,7 +76,7 @@ variable "global_region" {
 }
 
 variable "my_user" {
-  description = "Me."
+  description = "The user running this for access to S3"
   type        = "string"
 }
 
@@ -96,6 +96,10 @@ variable "container_server_asg_subnets" {
 }
 
 variable "container_server_ami" {
+  description = "The AMI ID to use for the container server host."
+  type        = "string"
+}
+variable "container_worker_ami" {
   description = "The AMI ID to use for the container server host."
   type        = "string"
 }

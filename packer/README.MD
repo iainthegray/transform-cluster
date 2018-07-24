@@ -7,3 +7,18 @@ The install-scripts for nomad and consul were sourced from:
 They have been modified to suit this install.
 
 All variables are declared at the top of each packer file.
+
+There are 2 packer files:
+* nomad-consul.json
+  * This builds the nomad/consul server AMI
+  * Name will be nomad-consul[timestamp]
+* nomad-worker.json
+  * This builds the nomad-worker servers
+  * Name will be nomad-worker[timestamp]
+
+### Build Commands
+`packer build [json file]`
+
+Once the AMIs are built the AMIs should be referenced in terraform.tfvars as:
+* container_server_ami
+* container_worker_ami

@@ -1,0 +1,17 @@
+#!/bin/bash
+
+# Update python
+sudo yum -y install python36
+sudo yum -y install docker
+sudo chkconfig docker on
+# change links
+sudo rm /usr/bin/python
+sudo rm /usr/bin/pip
+sudo ln -s /usr/bin/python36 /usr/bin/python
+sudo ln -s /usr/bin/pip-3.6 /usr/bin/pip
+# Install python packages
+
+sudo pip install -r /tmp/requirements.txt
+
+# Move the command script to a better location
+sudo cp /tmp/pii_remove.py /usr/local/bin

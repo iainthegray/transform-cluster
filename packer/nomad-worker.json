@@ -12,7 +12,7 @@
       "source_ami": "{{user `source_ami`}}",
       "instance_type": "t2.micro",
       "ssh_username": "ec2-user",
-      "ami_name": "nomad-consul{{timestamp}}",
+      "ami_name": "nomad-worker{{timestamp}}",
       "communicator": "ssh",
       "tags": {
         "OS_Version": "{{user `os_version_tag`}}",
@@ -21,7 +21,7 @@
       }
     }
   ],
-  "_provisioners_comment": "There are 3 provisioners split for ease of viewing.",
+  "_provisioners_comment": "There are 5 provisioners split for ease of viewing.",
   "provisioners": [
     {
       "type": "file",
@@ -41,9 +41,19 @@
       ]
     },
     {
+      "type": "file",
+      "source": "{{template_dir}}/worker_scripts/requirements.txt",
+      "destination": "/tmp/requirements.txt"
+    },
+    {
+      "type": "file",
+      "source": "{{template_dir}}/worker_scripts/pii_remove.py",
+      "destination": "/tmp/pii_remove.py"
+    },
+    {
       "type": "shell",
       "inline": [
-        "/tmp/install-scripts/install-docker"
+        "/tmp/install-scripts/install-worker"
       ]
     }
   ]

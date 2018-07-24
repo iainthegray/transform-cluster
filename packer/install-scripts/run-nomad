@@ -3,7 +3,7 @@
 
 set -e
 
-readonly NOMAD_CONFIG_FILE="default.hcl"
+readonly NOMAD_CONFIG_FILE="default.json"
 readonly SUPERVISOR_CONFIG_PATH="/etc/supervisor/conf.d/run-nomad.conf"
 
 readonly EC2_INSTANCE_METADATA_URL="http://169.254.169.254/latest/meta-data"
@@ -160,7 +160,7 @@ EOF
 
   log_info "Creating default Nomad config file in $config_path"
   cat > "$config_path" <<EOF
-datacenter = "$availability_zone"
+datacenter = "$instance_region"
 name       = "$instance_id"
 region     = "$instance_region"
 bind_addr  = "0.0.0.0"

@@ -1,21 +1,21 @@
 job "transform" {
   type        = "batch"
-  datacenters = ["eu-west-1a", "eu-west-1b", "eu-west-1c"]
+  datacenters = ["eu-west-1"]
 
   meta {
     input   = ""
   }
 
   parameterized {
-    meta_required = ["input"]
+    meta_required = ["s3_file"]
   }
 
   task "tf" {
     driver = "exec"
 
     config {
-      command = "/usr/local/bin/letter_sub.sh"
-      args    = ["${NOMAD_META_INPUT}"]
+      command = "/usr/bin/python"
+      args    = ["/usr/local/bin/pii_remove.py", "-i", "${NOMAD_META_S3_FILE}"]
     }
 
     resources {

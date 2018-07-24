@@ -3,7 +3,7 @@
 #--------------------------------------------------------------
 resource "aws_s3_bucket" "transform-bucket-irg-test" {
   bucket = "${var.transform-bucket}"
-  acl    = "private"
+  acl    = "public-read"
 
   tags {
     Name = "${var.transform-bucket}"
