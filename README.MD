@@ -7,8 +7,9 @@ A repo to demonstrate the capabilities of a number of Hashicorp's products:
 * Consul - Used as a service discovery layer for the cluster
 * Nomad - Used as a scheduler for batch job delivery
 
-The project delivers a nomad cluster and demonstrates its use as a batch job scheduler, anonymising email texts using piiregex library
-https://github.com/Poogles/piiregex
+The project delivers a nomad cluster and demonstrates its use as a batch job scheduler, anonymising email texts using the scrubadub library
+
+https://github.com/datascopeanalytics/scrubadub
 
 ### Cluster Sizing
 
