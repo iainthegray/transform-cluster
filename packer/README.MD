@@ -4,7 +4,7 @@ The install-scripts for nomad and consul were sourced from:
 - https://github.com/hashicorp/terraform-aws-nomad
 - https://github.com/hashicorp/terraform-aws-consul
 
-They have been modified to suit this install.
+They have been modified to suit this install and fix an issue with the worker joining the cluster
 
 All variables are declared at the top of each packer file.
 
