@@ -224,10 +224,6 @@ EOF
   fi
 
   local bootstrap_expect=""
-  local instance_tags=""
-  local cluster_size=""
-
-  instance_tags=$(get_instance_tags "$instance_id" "$instance_region")
   if [[ "$server" == "true" ]]; then
     local instance_tags=""
     local cluster_size=""
